@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Task from './Task/Task'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    tasks: [{ id: 1, title: 'Get bookssss' }, { id: 2, title: 'Get groceries' }, { id: 3, title: 'Do dishes' }]
+  }
+
+  deleteTaskHandler = (id) => {
+    const tasks = this.state.tasks.filter(task => task.id !== id)
+    this.setState({ tasks })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>My Todo List</h1>
+        {this.state.tasks.map(task => {
+          return <Task
+              key={task.id}
+              deleteHandler={() => this.deleteTaskHandler(task.id)}>
+              {task.title}
+            </Task>
+        })}
+      </div>
+    )
+  }
 }
 
 export default App;
