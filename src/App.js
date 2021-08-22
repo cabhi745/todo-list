@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import AddTask from './AddTask/AddTask';
 import './App.css';
-import Task from './Task/Task'
+import Task from './Task/Task';
 
 class App extends Component {
   state = {
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>My Todo List</h1>
+        <AddTask></AddTask>
         {this.state.tasks.map(task => {
           return <Task
               key={task.id}
