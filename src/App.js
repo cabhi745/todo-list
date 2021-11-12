@@ -15,16 +15,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>My Todo List</h1>
-        <AddTask></AddTask>
-        {this.state.tasks.map(task => {
-          return <Task
-              key={task.id}
-              deleteHandler={() => this.deleteTaskHandler(task.id)}>
-              {task.title}
-            </Task>
-        })}
+      <div className ="container">
+        <div className="App">
+          <h1>My Todo List</h1>
+          <AddTask></AddTask>
+          {this.state.tasks.map(task => {
+            return <Task
+                key={task.id}
+                deleteHandler={() => this.deleteTaskHandler(task.id)}>
+                {task.title}
+              </Task>
+          })}
+        </div>
       </div>
     )
   }
